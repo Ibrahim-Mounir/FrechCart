@@ -29,7 +29,9 @@ export default function Navbar() {
             ></i>
           </button>
           <div
-            className={`flex-col  justify-evenly lg:flex-row gap-5 lg:gap-7 items-center lg:flex lg:static ${
+            className={`flex-col ${
+              token && "mx-auto"
+            } justify-between lg:flex-row gap-5 lg:gap-7 items-center lg:flex lg:static ${
               isMenuOpen
                 ? "flex absolute top-[55px] left-0 border-t  border-gray-300 lg:border-none right-0 bg-slate-100 py-5 lg:py-0"
                 : "hidden"
@@ -110,25 +112,19 @@ export default function Navbar() {
                     Orders
                   </NavLink>
                 </li>
-                <li>
-                  <Link
-                    className="ms-auto relative cursor-pointer"
-                    to={"/cart"}
-                  >
-                    <i className="fa-solid fa-cart-shopping text-lg "></i>
-                    <span className="h-5 w-5 flex items-center justify-center bg-primary-500 absolute top-0 left-0 text-white rounded-full  translate-x-1/2 -translate-y-1/2">
-                      {cartInfo == null ? (
-                        <i className="fa-solid fa-spinner fa-spin"></i>
-                      ) : (
-                        cartInfo.numOfCartItems
-                      )}
-                    </span>
-                  </Link>
-                </li>
               </ul>
             )}
-
-            <ul className="flex flex-row gap-5 items-center lg:ms-auto">
+            <Link className=" relative cursor-pointer" to={"/cart"}>
+              <i className="fa-solid fa-cart-shopping text-lg "></i>
+              <span className="h-5 w-5 flex items-center justify-center bg-primary-500 absolute top-0 left-0 text-white rounded-full  translate-x-1/2 -translate-y-1/2">
+                {cartInfo == null ? (
+                  <i className="fa-solid fa-spinner fa-spin"></i>
+                ) : (
+                  cartInfo.numOfCartItems
+                )}
+              </span>
+            </Link>
+            <ul className="flex flex-row gap-5 items-center justify-center lg:ms-auto">
               <li>
                 <a href="https://facebook.com" target="_blank">
                   <i className="fa-brands fa-facebook"></i>
@@ -160,7 +156,7 @@ export default function Navbar() {
                 </a>
               </li>
             </ul>
-            <ul className="flex flex-col lg:flex-row gap-5  items-center">
+            <ul className="flex flex-col lg:flex-row gap-5 justify-center items-center">
               {!token && (
                 <>
                   <li>
